@@ -34,7 +34,7 @@ use App\component\Content;
                       <td>{{Content::dateformat($country->updated_at)}}</td>                      
                       <td>{!! $country->country_status == 1 ? "<label class='label label-success'>Active</label>" : "<label class='label label-warning'>Inactive</label>" !!}</label></td>
                       <td class="text-right">            
-                        <a href="{{route('getCountryEdit', ['con' => $country->id])}}" title="Edit County">
+                        <a href="{{route('getCountryEdit', ['countryId' => $country->id])}}" title="Edit County">
                           <label class="icon-list ic_book_project"></label>
                         </a>
                         <a href="javascript:void(0)" class="RemoveHotelRate" data-type="country" data-id="{{$country->id}}" title="Disable this country ?">

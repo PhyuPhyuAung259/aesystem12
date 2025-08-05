@@ -101,17 +101,17 @@ Route::group(['middleware' => ['IsLogin']], function(){
 		Route::get('booked/cruise/apply/{project}-{hotel}-{bookid}/room', 'Admin\BookingController@bookedCruise')->name('bookedCruise');
 		Route::post('booking/applied/room', 'Admin\BookingController@hotelbookedRoomApplied')->name('bookingAppliedroom');
 		Route::post('booking/applied/cruisrate', 'Admin\BookingController@crusebookedRoomApplied')->name('crbgAppliedroom');
-		Route::get('country', 'Admin\DestinationController@CountryList')->name('CountryList');	
-		Route::get('country/create/new', 'Admin\DestinationController@getCountry')->name('getCountry');	
-		Route::post('country/create', 'Admin\DestinationController@createCountry')->name('createCountry');
-		Route::get('country/{countryId}/edit', 'Admin\DestinationController@getCountryEdit')->name('getCountryEdit');
+		Route::get('country', 'App\Http\Controllers\Admin\DestinationController@CountryList')->name('CountryList');	
+		Route::get('country/create/new', 'App\Http\Controllers\Admin\DestinationController@getCountry')->name('getCountry');	
+		Route::post('country/create', 'App\Http\Controllers\Admin\DestinationController@createCountry')->name('createCountry');
+		Route::get('country/{countryId}/edit', 'App\Http\Controllers\Admin\DestinationController@getCountryEdit')->name('getCountryEdit');
 		
-		Route::post('country/update', 'Admin\DestinationController@updateCountry')->name('updateCountry');
-		Route::get('province', 'Admin\DestinationController@provinceList')->name('provinceList');	
-		Route::get('province/create/new', 'Admin\DestinationController@getProvince')->name('getProvince');
-		Route::post('province/create', 'Admin\DestinationController@createProvince')->name("createProvince");
-		Route::get('province/{proId}/edit', 'Admin\DestinationController@getProvinceEdit')->name('getProvinceEdit');
-		Route::post('province/update', 'Admin\DestinationController@updateProvince')->name('updateProvince');
+		Route::post('country/update', 'App\Http\Controllers\Admin\DestinationController@updateCountry')->name('updateCountry');
+		Route::get('province', 'App\Http\Controllers\Admin\DestinationController@provinceList')->name('provinceList');	
+		Route::get('province/create/new', 'App\Http\Controllers\Admin\DestinationController@getProvince')->name('getProvince');
+		Route::post('province/create', 'App\Http\Controllers\Admin\DestinationController@createProvince')->name("createProvince");
+		Route::get('province/{proId}/edit', 'App\Http\Controllers\Admin\DestinationController@getProvinceEdit')->name('getProvinceEdit');
+		Route::post('province/update', 'App\Http\Controllers\Admin\DestinationController@updateProvince')->name('updateProvince');
 		Route::get('suppliers', 'Admin\SupplierController@supplierList')->name('supplierList');	
 		Route::get('supplier/{supplier}', 'Admin\SupplierController@supplierBusiness')->name('supplierBusiness');
 

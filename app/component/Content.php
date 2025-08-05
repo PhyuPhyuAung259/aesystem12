@@ -31,7 +31,7 @@ class Content
 
 	public static function urlImage( $filename, $fileId = 0){
 		$user = User::find($fileId);		
-		$userDir = isset($user) ? $user->name: Auth::check() ? \Auth::user()->name : '';
+		$userDir = isset($user) ? $user->name : (Auth::check() ? \Auth::user()->name : '');
 		if($filename){
 			if ( file_exists(public_path("storage/").$filename) ) {	
 				$file = url('').\Storage::url("public/".$filename);	
@@ -47,7 +47,7 @@ class Content
 	}
 	public static function urlthumbnail( $filename, $fileId = 0, $authID = 0){
 		$user = User::find($fileId);		
-		$userDir = isset($user) ? $user->name: \Auth::check() ? \Auth::user()->name : '';
+		$userDir = isset($user) ? $user->name: (\Auth::check() ? \Auth::user()->name : '');
 		if($filename){
 			if ( file_exists(public_path("storage/thumbnail/").$filename) ) {	
 				$file = url('').\Storage::url("public/thumbnail/".$filename);	

@@ -19,7 +19,7 @@
                     <label class="location">
                      
                       <select class="form-control input-sm locationchange" name="location">
-                        @foreach(\App\Country::where('country_status', 1)->orderBy('country_name')->get() as $loc)
+                        @foreach(\App\Models\Country::where('country_status', 1)->orderBy('country_name')->get() as $loc)
                           <option value="{{$loc->id}}" {{$locationid == $loc->id ? 'selected':''}}>{{$loc->country_name}}</option>
                         @endforeach
                       </select>
@@ -46,7 +46,7 @@
                       <td>{{Content::dateformat($province->updated_at)}}</td>          
                       <td class="text-center">{!! $province->province_status == 1 ? "<label class='label label-success'>Active</label>" : "<label class='label label-warning'>Inactive</label>" !!}</label></td>
                       <td class="text-right">                      
-                        <a href="{{route('getProvinceEdit',['url'=> $province->id])}}" title="Edit Provice">
+                        <a href="{{route('getProvinceEdit',['proId'=> $province->id])}}" title="Edit Provice">
                           <label class="icon-list ic_book_project"></label>
                         </a>
                         <a href="javascript:void(0)" class="RemoveHotelRate" data-type="province" data-id="{{$province->id}}" title="Disable this province ?">

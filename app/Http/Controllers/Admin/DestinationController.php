@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\admin;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\Country;
 use App\Models\Province;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
 class DestinationController extends Controller
 {
     //
@@ -34,7 +36,7 @@ class DestinationController extends Controller
 		$addNew = New Country;
 		$addNew->country_name 	= $req->name;
 		$addNew->country_title 	= $req->country_title;
-		$addNew->country_slug 	= str_slug($req->name, '-');
+		$addNew->country_slug 	= Str::slug($req->name, '-');
 		$addNew->nationality  	= $req->nationality;
 		$addNew->country_intro 	= $req->country_intro;
 		$addNew->country_status = $req->status;
@@ -60,7 +62,7 @@ class DestinationController extends Controller
 		$addNew = Country::find($req->eid);
 		$addNew->country_name = $req->name;
 		$addNew->country_title 	= $req->country_title;
-		$addNew->country_slug = str_slug($req->name, '-');
+		$addNew->country_slug = Str::slug($req->name, '-');
 		$addNew->nationality  = $req->nationality;
 		$addNew->country_intro = $req->country_intro;
 		$addNew->country_status = $req->status;
@@ -84,7 +86,7 @@ class DestinationController extends Controller
         } 
 		$addpro = New Province;
 		$addpro->province_name = $req->province_name;
-		$addpro->slug = str_slug($req->province_name,'-');
+		$addpro->slug = Str::slug($req->province_name,'-');
 		$addpro->country_id = $req->country;
 		$addpro->province_status = $req->status;
 		$addpro->web = $req->web;
@@ -109,7 +111,7 @@ class DestinationController extends Controller
         } 
 		$addpro = Province::find($req->eid);
 		$addpro->province_name 	= $req->province_name;
-		$addpro->slug 			= str_slug($req->province_name,'-');
+		$addpro->slug 			= Str::slug($req->province_name,'-');
 		$addpro->country_id 	= $req->country;
 		$addpro->province_status = $req->status;
 		$addpro->web 			= $req->web;

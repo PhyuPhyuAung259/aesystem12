@@ -14,7 +14,7 @@
       <section class="content"> 
         <div class="row">
           @include('admin.include.message')
-          <div class="col-lg-12"><h3 class="border">Country Management</h3></div>
+          <div class="col-lg-12"><h3 class="border">Province Management</h3></div>
           <form method="POST" action="{{route('createProvince')}}">
               {{csrf_field()}}
               <section class="col-lg-9 connectedSortable">
@@ -23,7 +23,7 @@
                     <div class="col-md-6 col-xs-12">
                       <div class="form-group">
                         <label>Add New Province<span style="color:#b12f1f;">*</span></label> 
-                        <input autofocus="" type="text" placeholder="Country Name" class="form-control" name="province_name" required>
+                        <input autofocus="" type="text" placeholder="Province Name" class="form-control" name="province_name" required>
                       </div> 
                     </div>
                     <div class="col-md-6 col-xs-12">
@@ -31,7 +31,7 @@
                         <label>Country <span style="color:#b12f1f;">*</span></label> 
                         <select class="form-control country" name="country" data-type="country" data-locat="data" required>
                           <option>--Choose--</option>
-                          @foreach(App\Country::where('country_status', 1)->orderBy('country_name')->get() as $con)
+                          @foreach(App\Models\Country::where('country_status', 1)->orderBy('country_name')->get() as $con)
                             <option value="{{$con->id}}">{{$con->country_name}}</option>
                           @endforeach
                         </select>

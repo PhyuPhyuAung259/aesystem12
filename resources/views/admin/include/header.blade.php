@@ -38,7 +38,7 @@ $logo = Storage::url('avata/' . $comadd->logo);
                         </li>
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="{{ route('userStore', ['id' => Auth::user()->id]) }}"
+                                <a href="{{ route('userStore', ['user' => Auth::user()->id]) }}"
                                     class="btn btn-default btn-flat">Edit Profile</a>
                             </div>
                             <div class="pull-right">

@@ -96,7 +96,7 @@ class Project extends Model
     
         }else{
             $projects = \DB::table('project')
-                ->join('project_user', 'project_user.project_id','=','project.id')
+                ->join('project_user', 'project_user.projec                        t_id','=','project.id')
                 ->join('users', 'users.id','=','project.user_id')
                 ->select("project.*", "project_user.id as id", "project_user.*", "project.user_id as UserID", "project.id as project_id")
                 ->orWhereBetween('project.project_end', [$currentDate, $nextMonth])
