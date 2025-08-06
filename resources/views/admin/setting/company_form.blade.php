@@ -50,7 +50,7 @@
               <div class="form-group">
                 <label>Country <span style="color:#b12f1f;">*</span></label> 
                 <select class="form-control country" name="country" data-type="country" required>
-                  @foreach(App\Country::where('country_status', 1)->orderBy('country_name')->get() as $con)
+                  @foreach(App\Models\Country::where('country_status', 1)->orderBy('country_name')->get() as $con)
                     <option value="{{$con->id}}" {{(isset($cp->country_id)? $cp->country_id: '') == $con->id ? 'selected':''}}>{{$con->country_name}}</option>
                   @endforeach
                 </select>
@@ -60,7 +60,7 @@
               <div class="form-group">
                 <label>City <span style="color:#b12f1f;">*</span></label> 
                 <select class="form-control" name="city" id="dropdown-data" required>
-                  @foreach(App\Province::where(['province_status'=> 1])->orderBy('province_name')->get() as $pro)
+                  @foreach(App\Models\Province::where(['province_status'=> 1])->orderBy('province_name')->get() as $pro)
                     <option value="{{$pro->id}}" {{(isset($cp->province_id)? $cp->province_id:'') == $pro->id ? 'selected':''}}>{{$pro->province_name}}</option>
                   @endforeach
                 </select>
