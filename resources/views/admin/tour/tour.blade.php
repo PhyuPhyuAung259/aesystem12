@@ -17,7 +17,7 @@
               <div class="col-sm-2 col-xs-6 pull-right" style="text-align: right; position: relative; z-index: 2;">
                 <label class="location">
                   <select class="form-control input-sm locationchange" name="location">
-                    @foreach(\App\Country::getCountryTour() as $loc)
+                    @foreach(App\Models\Country::getCountryTour() as $loc)
                       <option value="{{$loc->id}}" {{$locationid == $loc->id ? 'selected':''}}>{{$loc->country_name}}</option>
                     @endforeach
                   </select>
@@ -72,19 +72,19 @@
                       <span class="badge">{{$tour->pricetour->count()}}</span>
                     </td>                  
                     <td class="text-right">                      
-                      <a href="{{route('getTourUpdate', ['url'=> $tour->id])}}" title="Edit Tour">
+                      <a href="{{route('getTourUpdate', ['tourid'=> $tour->id])}}" title="Edit Tour">
                         <label src="#" class="icon-list ic_edit_tour"></label>
                       </a>
-                      <a href="{{route('getTourPrice', ['url'=> $tour->id])}}" title="Add Tour Pax & Price">
+                      <a href="{{route('getTourPrice', ['tourid'=> $tour->id])}}" title="Add Tour Pax & Price">
                         <label src="#" class="icon-list ic_tour_addprice"></label>
                       </a>
-                      <a href="{{route('getTourPriceEdit', ['url' => $tour->id])}}" title="Edit Tour Pax & Price">
+                      <a href="{{route('getTourPriceEdit', ['tourid' => $tour->id])}}" title="Edit Tour Pax & Price">
                         <label src="#" class="icon-list ic_tour_editprice"></label>
                       </a>
-                      <a target="_blank" href="{{route('getTourReport', ['url'=> $tour->id, 'type'=> 'selling'])}}" title="View Tour Report Selling Price">
+                      <a target="_blank" href="{{route('getTourReport', ['tourid'=> $tour->id, 'type'=> 'selling'])}}" title="View Tour Report Selling Price">
                         <label src="#" class="icon-list ic_report_selling"></label>
                       </a>
-                      <a target="_blank" href="{{route('getTourReport', ['url'=> $tour->id, 'type'=> 'net'])}}" title="View Tour Report Net Price">
+                      <a target="_blank" href="{{route('getTourReport', ['tourid'=> $tour->id, 'type'=> 'net'])}}" title="View Tour Report Net Price">
                         <label src="#" class="icon-list ic_report_net"></label>
                       </a>
                       {!! Content::DelUserRole("Delete this tour ?", "tour", $tour->id, $tour->user_id ) !!}    

@@ -21,7 +21,7 @@
 						<table class="table">
 							<tr>
 								<th class="text-center" style="border-top: none;">Tour Pax</th>
-								<th class="text-center" style="border-top: none;">Tariff Price</th>
+								<th class="text-center" style="border-top: none;">Tariff Price</th>	
 							</tr>							
 								@foreach($tour->pricetour as $pax_price)
 									@if($type == "selling")

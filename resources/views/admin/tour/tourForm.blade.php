@@ -36,7 +36,7 @@ use App\component\Content;
 
                                             <select class="form-control country" name="country" id="country"
                                                 data-type="country" data-method="tour_accommodation" required>
-                                                @foreach (App\Country::where('country_status', 1)->orderBy('country_name')->get() as $con)
+                                                @foreach (App\Models\Country::where('country_status', 1)->orderBy('country_name')->get() as $con)
                                                     <option value="{{ $con->id }}">
                                                         {{ $con->country_name }}</option>
                                                 @endforeach
@@ -71,7 +71,7 @@ use App\component\Content;
                                                             id="search" onkeyup="myFunction()" class="form-control">
                                                     </div>
                                                     <ul class="dropdown-data" id="myUL" style="width: 100%;">
-                                                        @foreach (App\Business::where(['category_id' => 1, 'status' => 1])->orderBy('name', 'ASC')->get() as $key => $cat)
+                                                        @foreach (App\Models\Business::where(['category_id' => 1, 'status' => 1])->orderBy('name', 'ASC')->get() as $key => $cat)
                                                             <li class="list" style="padding: 0px 0px;">
                                                                 <div class="checkbox" style="margin: 0px">
                                                                     <input id="checkid{{ $key }}" type="checkbox"
@@ -182,7 +182,7 @@ use App\component\Content;
                                 <div class="panel-heading"><strong>Tours Facilities</strong></div>
                                 <div class="panel-body scrolTourFeasility" style="padding: 8px; max-height: 277px;">
                                     <ul class="list-unstyled">
-                                        @foreach (\App\Service::where('service_cat', 0)->orderBy('service_name', 'ASC')->get() as $sv)
+                                        @foreach (\App\Models\Service::where('service_cat', 0)->orderBy('service_name', 'ASC')->get() as $sv)
                                             <li>
                                                 <div class="checkMebox">
                                                     <label>
@@ -206,7 +206,7 @@ use App\component\Content;
                                 <div class="panel-body scrolTourAccommodation"
                                     style="padding: 8px; max-height: 277px; overflow: auto;">
                                     <ul class="list-unstyled">
-                                        @foreach (\App\Supplier::where(['business_id' => 1, 'supplier_status' => 1, 'country_id' => Auth::user()->country_id])->orderBy('supplier_name', 'ASC')->get() as $sup)
+                                        @foreach (\App\Models\Supplier::where(['business_id' => 1, 'supplier_status' => 1, 'country_id' => Auth::user()->country_id])->orderBy('supplier_name', 'ASC')->get() as $sup)
                                             <li>
                                                 <div class="checkMebox">
                                                     <label>

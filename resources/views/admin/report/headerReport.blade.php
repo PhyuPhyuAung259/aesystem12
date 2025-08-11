@@ -1,5 +1,5 @@
 <?php 
-$comadd = \App\Company::find(1);
+$comadd = \App\Models\Company::find(1);
 $logo =  Storage::url("avata/".$comadd->logo);
 ?>
 <table class="table">

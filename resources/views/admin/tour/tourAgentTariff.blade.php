@@ -61,7 +61,6 @@
 												<td class="text-center">{{Content::money($pax_price->sprice)}} <span class="pcolor">{{Content::currency()}}</span></td>
 											</tr>
 										@endif
-									
 								@endforeach
 						</table>
 					</td>		
@@ -120,3 +119,4 @@
         @endforeach
   	</div>
 @endsection
+	

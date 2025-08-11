@@ -96,9 +96,10 @@ class Country extends Model
             ->join('tours', 'tours.country_id','=','con.id')
             ->where(['con.country_status'=> 1])
             ->select("con.*")
-            ->groupBy('tours.country_id')
+            
             ->orderBy('con.country_name', 'ASC')
             ->get();
+      
     }
 
 

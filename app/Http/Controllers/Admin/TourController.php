@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\Tour;
-use App\Models\TourPrice;
 use App\Models\Business;
 use App\Models\Province;
+use App\Models\TourPrice;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class TourController extends Controller
 {
@@ -36,7 +37,7 @@ class TourController extends Controller
         $addTour->tour_name    = $req->title;
         $addTour->user_id      = \Auth::user()->id;
         $addTour->author_id    = \Auth::user()->id;
-        $addTour->slug         = str_slug($req->title, '-');
+        $addTour->slug         = Str::slug($req->title, '-');
         $addTour->country_id   = $req->country;
         $addTour->province_id  = $req->city;
         $addTour->tour_price   = $req->tour_price;
@@ -93,7 +94,7 @@ class TourController extends Controller
         } 
         $photo = isset($req->image) ? $req->image : $req->image_old;
         $addTour->tour_name    = $req->title;
-        $addTour->slug         = str_slug($req->title, '-');
+        $addTour->slug         = Str::slug($req->title, '-');
         $addTour->country_id   = $req->country;
         $addTour->province_id  = $req->city;
         $addTour->tour_price   = $req->tour_price;
@@ -127,7 +128,7 @@ class TourController extends Controller
         if($req->eid == ""){
             $addbus = New Business;
             $addbus->name = $req->title;
-            $addbus->slug = str_slug($req->title, '-');
+            $addbus->slug = Str::slug($req->title, '-');
             $addbus->business_iso = $req->bus_ios;
             $addbus->meta_keyword = $req->meta_keyword;
             $addbus->meta_description = $req->meta_desc;
@@ -139,7 +140,7 @@ class TourController extends Controller
         }else{
             $addbus = Business::find($req->eid);
             $addbus->name = $req->title;
-            $addbus->slug = str_slug($req->title, '-');
+            $addbus->slug = Str::slug($req->title, '-');
             $addbus->business_iso = $req->bus_ios;
             $addbus->meta_keyword = $req->meta_keyword;
             $addbus->meta_description = $req->meta_desc;
@@ -163,6 +164,7 @@ class TourController extends Controller
             foreach ($req->pax_no as $key => $pax) {
                 $addprice = New TourPrice;
                 $addprice->tour_id = $req->tour_id;
+                $addprice->user_id = \Auth::user()->id;
                 $addprice->pax_no = $req->pax_no[$key];
                 $addprice->sprice = $req->sprice[$key];
                 $addprice->nprice = $req->nprice[$key];

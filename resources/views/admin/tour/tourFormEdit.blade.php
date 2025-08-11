@@ -31,7 +31,7 @@
                         <label>Country <span style="color:#b12f1f;">*</span></label> 
                         <select class="form-control country" name="country" data-type="country" data-locat="data" required>
                           <option>--Choose--</option>
-                          @foreach(App\Country::where('country_status', 1)->orderBy('country_name')->get() as $con)
+                          @foreach(App\Models\Country::where('country_status', 1)->orderBy('country_name')->get() as $con)
                             <option value="{{$con->id}}" {{$tour->country_id == $con->id ? 'selected':''}}>{{$con->country_name}}</option>
                           @endforeach
                         </select>
@@ -41,7 +41,7 @@
                       <div class="form-group">
                         <label>City <span style="color:#b12f1f;">*</span></label> 
                         <select class="form-control" name="city" id="dropdown-data" required>
-                          @foreach(App\Province::where(['province_status'=> 1,'country_id' =>$countryId])->orderBy('province_name')->get() as $pro)
+                          @foreach(App\Models\Province::where(['province_status'=> 1,'country_id' =>$countryId])->orderBy('province_name')->get() as $pro)
                             <option value="{{$pro->id}}" {{$tour->province_id == $pro->id ? 'selected':''}}>{{$pro->province_name}}</option>
                           @endforeach
                         </select>
@@ -59,7 +59,7 @@
                                 <input type="text" data-url="{{route('getFilter')}}" id="data_filter" class="form-control" >
                               </div>
                               <ul class="dropdown-data" style="width: 100%;" id="Show_date">
-                                @foreach(App\Business::where(['category_id'=>1, 'status'=>1])->orderBy('name', 'ASC')->get() as $key=>$cat)
+                                @foreach(App\Models\Business::where(['category_id'=>1, 'status'=>1])->orderBy('name', 'ASC')->get() as $key=>$cat)
                                 <li>
                                   <div class="checkbox" style="margin:0px">
                                     <input id="checkid{{$key}}" type="checkbox" name="type[]" value="{{$cat->id}}" {{in_array($cat->id, explode(',', $dataId)) ? 'checked':''}}> 
@@ -166,7 +166,7 @@
                     <div class="panel-heading"><strong>Tours Facilities</strong></div>
                     <div class="panel-body scrolTourFeasility" style="padding: 8px; max-height: 277px; ">
                       <ul class="list-unstyled">
-                        @foreach(\App\Service::where('service_cat',0)->orderBy('service_name', 'ASC')->get() as $sv)
+                        @foreach(\App\Models\Service::where('service_cat',0)->orderBy('service_name', 'ASC')->get() as $sv)
                           <li>
                             <div class="checkMebox">
                               <label>
@@ -188,7 +188,7 @@
                     <div class="panel-heading"><strong>Accommodation</strong></div>
                     <div class="panel-body scrolTourAccommodation" style="padding: 8px; max-height: 277px; overflow: auto;">
                       <ul class="list-unstyled">
-                        @foreach(\App\Supplier::where(['business_id'=>1, 'supplier_status'=>1, 'country_id'=> $tour->country_id])->orderBy('supplier_name', 'ASC')->get() as $sup)
+                        @foreach(\App\Models\Supplier::where(['business_id'=>1, 'supplier_status'=>1, 'country_id'=> $tour->country_id])->orderBy('supplier_name', 'ASC')->get() as $sup)
                           <li>
                             <div class="checkMebox">
                               <label>

@@ -44,7 +44,7 @@ class DestinationController extends Controller
 		$addNew->country_photo   = $req->image;
         $addNew->country_picture = $gallery;
 		$addNew->save();
-		return back()->with(['message'=> 'Added New country successfully', 'status'=> 'success', 'status_icon'=> 'fa-check-circle']); 
+		return back()->with(['message'=> 'Added New country successfully', 'st atus'=> 'success', 'status_icon'=> 'fa-check-circle']); 
 	}
 
 	public function getCountryEdit($countId){
